@@ -1,0 +1,18 @@
+.header-text h2{
+    margin-top: 140px;
+    font-size: 48px;
+    color:#111430;
+}
+.header-text p{
+    font-size:16px;
+    color: #000;
+}
+.headermain-container img{
+    margin-top:70px;
+}
+.headermain-container  .btn{
+    width: 170px;
+    height: 45px;
+    color: #fff;
+    background-color: #111430;
+}
