@@ -1,0 +1,92 @@
+.service{
+    padding:98px 0;
+}
+.service h2{
+    font-size: 34px;
+    color:#2D2D2D;
+    text-align: center;
+    letter-spacing: 0.396px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 43px;
+    padding:75px 0;
+}
+.service h2 span{
+    color:#7AB259;
+}
+
+/* sevice details part css */
+
+.serviceDetails {
+    width: 370px;
+    height: 319px;
+    background: #FFFFFF;
+    border-radius: 10px;
+    text-align: center;
+    padding:34px 67px;
+    transition: .3 all linear;
+    position: relative;
+    box-shadow: 0px 10px 80px rgba(0, 0, 0, 0.1);
+}
+.serviceDetails:hover{
+    
+}
+.serviceDetails img{
+    width:74px;
+    height: 74px;
+    transition: .5s linear ;
+}
+.serviceDetails h4{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 16px;
+    text-align: center;
+    letter-spacing: 0.396px;
+    color: #111430;
+    padding: 18px 0;
+
+}
+.serviceDetails p{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: 0.396px;
+    color: rgba(0, 0, 0, 0.7);
+}
+.serviceDetails::after{
+    position: absolute;
+    background:#FBD062;
+    content:'';
+    width: 0;
+    height: 0;
+    opacity: 0;
+    right: 0;
+    bottom: 0;
+    top:0;
+    border-radius: 10px;
+    transition: .3s all linear;
+}
+.service-details-txt{
+    position: relative;;
+    z-index: 999;
+}
+.serviceDetails:hover p{
+ color:#000;
+}
+.serviceDetails:hover::after{
+    opacity: 1;
+    height: 100%;
+    width: 100%;
+   
+   
+}
+.serviceDetails:hover img{
+    transform: rotate(360deg)scale(0.7);
+    
+}

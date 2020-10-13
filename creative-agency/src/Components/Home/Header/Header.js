@@ -1,5 +1,5 @@
 import React from 'react'
-import { HeaderMain } from '../HeaderMain/HeaderMain';
+import { HeaderMain, JoinCompany } from '../HeaderMain/HeaderMain';
 import { Navbar } from '../Navbar/Navbar'
 import './Header.css';
 

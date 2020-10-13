@@ -2,8 +2,14 @@
     font-weight:600px;
     color:#474747;
 }
-
+.navbar-light .navbar-nav{
+    margin-top: 40px;
+}
 .navbar-light .navbar-nav .nav-link {
     color:#474747;
-    padding: 40px;
+    padding: 20px;
+    font-weight: 400px;
+}
+.navbar-light .navbar-nav .nav-item .btn{
+    margin-top: 10px;
 }

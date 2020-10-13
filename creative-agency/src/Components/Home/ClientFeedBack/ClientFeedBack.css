@@ -1,0 +1,59 @@
+.clientFeedBack{
+    padding: 98px 0px;
+}
+.clientFeedBack h2{
+    font-size: 34px;
+    color:#2D2D2D;
+    text-align: center;
+    letter-spacing: 0.396px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 43px;
+    padding-bottom: 75px;
+}
+.clientFeedBack h2 span{
+    color:#7AB259;
+}
+
+/* feed back details css part */
+.feedback-details .feedback-txt{
+    width: 350px;
+    height: 212px;
+    border: 1px solid #BFBFBF;
+    box-sizing: border-box;
+    border-radius: 4px;
+   margin-right: 30px;
+   padding: 25px 40px;
+}
+.feedback-details img{
+    width: 64px;
+    height: 64px;
+    margin-right: 18px;
+}
+.feedback-details h4{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 30px;
+    color: #000000;
+}
+.feedback-details .d-flex div p{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 24px;
+    color: #000000;
+
+}
+.feedback-details p{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.005em;
+    color:#707070;
+}

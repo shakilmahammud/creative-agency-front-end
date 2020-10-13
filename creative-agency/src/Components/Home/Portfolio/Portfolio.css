@@ -1,0 +1,39 @@
+.portfolio{
+    background: #111430;
+    height: 700px;
+    padding:98px 0;
+}
+.portfolio img{
+    width: 465.49px;
+    height: 334.7px;
+    border-radius: 8.23879px;
+}
+.portfolio h2{
+    font-size: 34px;
+    color:#fff;
+    text-align: center;
+    letter-spacing: 0.396px;
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 43px;
+    padding-bottom: 75px;
+}
+.portfolio h2 span{
+    color:#7AB259;
+}
+.carousel-indicators {
+    bottom:-100px;
+}
+.carousel-indicators li{
+    border-radius:50%;
+    width: 15px;
+    height: 15px;
+    background: #242A65;
+}
+.carousel-indicators .active{
+    border-radius:50%;
+    width: 15px;
+    height: 15px;
+    background:#FBD062;
+}
