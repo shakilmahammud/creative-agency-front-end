@@ -1,0 +1,62 @@
+.showOrder{
+    background: #E5E5E5;
+    height: 100%;
+    padding:80px 0;
+    padding-left: 35px;
+}
+.showOrder input{
+    width: 570px;
+    height: 60px;
+    background: #FFFFFF;
+    border: 1px solid rgba(0, 0, 0, 0.1);        box-sizing: border-box;
+    border-radius: 4px;
+    padding: 10px;
+    outline: none;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+.showOrder span{
+    padding: 10px;;
+}
+.showOrder textarea{
+    width: 570px;
+    height: 112px;
+    font-size: 20px;
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid rgba(0, 0, 0, 0.1); 
+    padding: 10px;
+    outline: none;
+}
+.showOrder ::placeholder{
+font-family: Poppins;
+font-style: normal;
+font-weight: 300;
+font-size: 16px;
+line-height: 24px;
+letter-spacing: 0.396px;
+color: rgba(0, 0, 0, 0.3);
+
+}
+.showOrder .priceInput{
+    width: 284px;
+    height: 60px;
+}
+.showOrder .uploadFile{
+    width: 251px;
+    height: 60px;
+    background: #DEFFED;
+    border: 1px solid #009444;
+    box-sizing: border-box;
+    border-radius: 5px;
+    font-family: Poppins;
+   font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 24px;
+    color: #009444;
+    margin-left: 15px;
+    text-align: center;
+    cursor: pointer;
+    padding: 20px;
+}

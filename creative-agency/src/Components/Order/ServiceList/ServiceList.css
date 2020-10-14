@@ -1,0 +1,42 @@
+.course-item{
+    background: #FFFFFF;
+    border-radius: 20px;
+    padding:25px 20px;
+}
+.course-item img{
+    width: 74px;
+    height: 74px;
+}
+.course-item h3{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 16px;
+    letter-spacing: 0.396px;
+    color: #111430;
+    margin-top: 20px;
+
+}
+.course-item p{
+    font-family: Poppins;
+    font-style: normal;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 28px;
+    letter-spacing: 0.396px;
+    color: rgba(0, 0, 0, 0.7);
+}
+.course-item .pd-btn{
+    width: 108px;
+    background: #FFE3E3;
+    border-radius: 5px;
+    color: #ff4545;
+    text-align: center;
+    align-self: center;
+    padding: 10px;
+}
+.course-item .done{
+    background:#C6FFE0;
+    color:#009444;
+}
