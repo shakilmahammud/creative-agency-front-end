@@ -1,9 +1,13 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import logo from '../../../images/logos/logo.png';
 import './Navbar.css';
 import  {Link} from 'react-router-dom'
+import { UserContext } from '../../../App';
+import Avatar from '@material-ui/core/Avatar';
+import { Login } from '../../Login/Login/Login';
 
 export const Navbar = () => {
+  const [userService,setUserService,userLogin,setUserLogin] = useContext(UserContext);
     return (
        <div className="container">
             <nav class="navbar navbar-expand-lg navbar-light ">
@@ -27,8 +31,11 @@ export const Navbar = () => {
       <li class="nav-item">
         <Link class="nav-link" to="/contact">Contact Us</Link>
       </li>
+     
       <li class="nav-item">
-        <Link to="/login"><button className="btn">Login</button></Link>
+        {
+          userLogin?<Link className="nav-link"><Avatar/> {userLogin?.name}</Link>:<Link to="/login"><button className="btn">Login</button></Link>
+        }
       </li>
     </ul>
     

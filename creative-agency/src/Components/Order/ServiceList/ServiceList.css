@@ -2,6 +2,8 @@
     background: #FFFFFF;
     border-radius: 20px;
     padding:25px 20px;
+    height: 254px;
+    margin-bottom: 20px;
 }
 .course-item img{
     width: 74px;

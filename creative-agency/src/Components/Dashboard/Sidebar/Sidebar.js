@@ -9,9 +9,9 @@ export const Sidebar = ({handleHeader}) => {
         <nav className="nav flex-column sidebar">
         <Link className="nav-link active" to="/"><img src={logo} alt="" style={{height:'40px'}}/></Link>
         <div className="side-menu">
-        <Link className="nav-link" to="/allservicelist" >
+        <Link className="nav-link" to="/dashboard" >
         <FontAwesomeIcon icon={faHdd} /> Service list</Link>
-        <Link className="nav-link active" to="/addService" onClick={handleHeader}>
+        <Link className="nav-link active" to="/addService" >
         <FontAwesomeIcon icon={faPlus} />
         Add Service
         </Link>

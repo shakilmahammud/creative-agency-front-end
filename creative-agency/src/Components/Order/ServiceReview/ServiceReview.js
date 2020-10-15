@@ -5,7 +5,18 @@ import { Sidebar } from '../Sidebar/Sidebar'
 
 export const ServiceReview = () => {
     const { register, handleSubmit,errors } = useForm();
-  const onSubmit = data => console.log(data)
+  const onSubmit = data => {
+    fetch('http://localhost:50001/addreview',{
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(res=>res.json())
+    .then(result=>{
+        console.log(result);
+    })
+    
+  }
     return (
         <section>
             <div className="container">

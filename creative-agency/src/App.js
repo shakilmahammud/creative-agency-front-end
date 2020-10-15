@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createContext, useEffect, useState } from 'react';
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,10 +11,29 @@ import { Home } from './Components/Home/Home/Home';
 import { Order } from './Components/Order/Order/Order';
 import { ServiceList } from './Components/Order/ServiceList/ServiceList';
 import { ServiceReview } from './Components/Order/ServiceReview/ServiceReview';
-import {Login} from './Components/Login/Login/Login'
+import {Login} from './Components/Login/Login/Login';
+import {PrivateRoute} from './Components/Login/PrivateRoute/PrivateRoute'
+import { OrderService } from './Components/Order/ServiceList/OrderService/OrderService';
+
+export const UserContext=createContext()
+
 function App() {
+  const [userLogin,setUserLogin]=useState({
+    isSignedIn: false,
+    name: '',
+    email: '',
+})
+const [userService,setUserService]=useState()
+const [orderService,setOrderService]=useState([])
+    // console.log(orderService);
+    useEffect(() => {
+        fetch('http://localhost:50001/userService')
+            .then(res => res.json())
+            .then(data =>setOrderService(data))
+    },[])
   return (
-    <Router>
+    <UserContext.Provider value={[userService,setUserService,userLogin,setUserLogin]}>
+      <Router>
       <Switch>
         <Route exact path="/">
           <Home/>
@@ -22,27 +41,28 @@ function App() {
         <Route path="/login">
           <Login/>
         </Route>
-        <Route path="/order">
+        <PrivateRoute path="/order">
           <Order/>
-        </Route>
-        <Route path="/servicelist">
-          <ServiceList/>
-        </Route>
-        <Route path="/review">
+        </PrivateRoute>
+        <PrivateRoute path="/servicelist">
+          <OrderService orderService={orderService}/>
+        </PrivateRoute>
+        <PrivateRoute path="/review">
           <ServiceReview/>
-        </Route>
-        <Route path="/allServicelist">
-        <Dashboard/>
-        </Route>
-        <Route path="/addService">
+        </PrivateRoute>
+        <PrivateRoute path="/dashboard">
+        <Dashboard orderService={orderService}/>
+        </PrivateRoute>
+        <PrivateRoute path="/addService">
           <AddService/>
-        </Route>
-        <Route path="/makeAdmin">
+        </PrivateRoute>
+        <PrivateRoute path="/makeAdmin">
           <MakeAdmin/>
-        </Route>
+        </PrivateRoute>
       </Switch>
     </Router>
     
+    </UserContext.Provider>
   );
 }
 

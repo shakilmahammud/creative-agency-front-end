@@ -5,7 +5,18 @@ import { useForm } from "react-hook-form";
 
 export const MakeAdmin = () => {
     const { register, handleSubmit,errors } = useForm();
-  const onSubmit = data => console.log(data)
+  const onSubmit = data =>{
+    fetch('http://localhost:50001/addAdmin',{
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+    })
+    .then(res=>res.json())
+    .then(result=>{
+        console.log(result);
+    })
+  }
+
     return (
         <section>
             
@@ -19,7 +30,7 @@ export const MakeAdmin = () => {
                     <div className="showOrder ">
                        
                  <form onSubmit={handleSubmit(onSubmit)}>
-                 <div className="addService">
+                 <div className="addService ">
                         <div>
                          <label>Email</label> <br/>
                         <input type="text" name="email" ref={register({ required: true })} placeholder="jon@gamil.com" className="mr-2"/> 

@@ -60,3 +60,18 @@ color: rgba(0, 0, 0, 0.3);
     cursor: pointer;
     padding: 20px;
 }
+@media only screen and (max-width: 768px){
+    .showOrder input{
+        width: 390px;
+    }
+    .showOrder textarea{
+        width: 390px;
+    }
+    .showOrder .priceInput{
+        width: 390px;
+    }
+    .showOrder .uploadFile{
+        width:390px;
+        margin-left: -5px;
+    }
+}

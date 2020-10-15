@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Route, Redirect } from 'react-router-dom';
+import { Route, Redirect, useLocation } from 'react-router-dom';
 import { useContext } from 'react';
-import { UserContext } from '../../App';
+import { UserContext } from '../../../App';
 import jwt_decode from "jwt-decode";
 
 export const PrivateRoute = ({children, ...rest}) => {
-    const [loginUser, setLoginUser] = useContext(UserContext);
-    
+  const [userService,setUserService,userLogin,setUserLogin] = useContext(UserContext);
+    const location =useLocation()
     const isLoggedIn = () => {
       const token = sessionStorage.getItem('token');
       if(!token){
@@ -22,14 +22,14 @@ export const PrivateRoute = ({children, ...rest}) => {
     return (
         <Route
       {...rest}
-      render={({ location }) =>
-        (loggedInUser.email || isLoggedIn()) ? (
+      render={ location  =>
+        (userLogin.email || isLoggedIn()) ? (
           children
         ) : (
           <Redirect
             to={{
               pathname: "/login",
-              state: { from: location }
+              location 
             }}
           />
         )

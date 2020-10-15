@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import firebaseConfig from './firebase.config';
@@ -7,24 +7,50 @@ import { useHistory, useLocation } from 'react-router-dom';
 import google from '../../../images/icons/google.png';
 import './login.css';
 import logo from '../../../images/logos/logo.png'
+import { UserContext } from '../../../App';
 
 export const Login = () => {
-  // const [loginUser,setLoginUser] = useContext(UserContext);
+  const [userService,setUserService,userLogin,setUserLogin] = useContext(UserContext);
   const history = useHistory();
-  const location = useLocation();
-  const { from } = location.state || { from: { pathname: "/" } };
-
+  const location=useLocation().location?.pathname
   if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
   }
+  const[admin,setAdmin]=useState([]);
+  const adminDashboard=(email,email1)=>{
+    console.log(userLogin.email)
+    if(email===email1 ){
+      history.push("/dashboard")
+    }
+    else{
+      history.replace(location || "/")
+    }
+  }
+  useEffect(() => {
+    fetch('http://localhost:50001/admin?email='+userLogin.email)
+        .then(res => res.json())
+        .then(data =>setAdmin(data))
+},[])
 
   const handleGoogleSignIn = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
-    firebase.auth().signInWithPopup(provider).then(function (result) {
-      const { displayName, email } = result.user;
-      const signedInUser = { name: displayName, email }
-      // setLoginUser(signedInUser);
-      storeAuthToken();
+    firebase.auth().signInWithPopup(provider).then(res=> {
+      const {displayName, email} =res.user;
+            const signedInUser = {
+                isSignedIn: true,
+                name: displayName,
+                email: email,
+            }
+            setUserLogin(signedInUser);
+            fetch('http://localhost:50001/admin?email='+email)
+        .then(res => res.json())
+        .then(data =>{
+          setAdmin(data)
+          adminDashboard(email,data[0].email)
+          storeAuthToken();
+        }
+        )
+     
     }).catch(function (error) {
       const errorMessage = error.message;
       console.log(errorMessage);
@@ -35,7 +61,7 @@ export const Login = () => {
     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
       .then(function (idToken) {
         sessionStorage.setItem('token', idToken);
-        history.replace(from);
+        // history.replace(location || "/");
       }).catch(function (error) {
         // Handle error
       });

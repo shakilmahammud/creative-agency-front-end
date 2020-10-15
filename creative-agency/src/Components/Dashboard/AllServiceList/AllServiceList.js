@@ -1,13 +1,12 @@
 import React from 'react';
 import './AllServiceList.css'
 
-export const AllServiceList = () => {
+export const AllServiceList = ({orderService}) => {
     return (
         <section>
         <div className="showOrder">
         <div className="bg-color">
          <table className="table table-borderless">
-            {/* <div className="th-bg"> */}
             <thead >
                 <tr >
                 <th className="text-secondary text-left" scope="col">Name</th>
@@ -17,23 +16,25 @@ export const AllServiceList = () => {
                 <th className="text-secondary" scope="col">Status</th>
                 </tr>
             </thead>
-            {/* </div> */}
             <tbody>
-                {/* {
-                  appointments.map((appointment, index) => 
+                {
+                  orderService.map((order,index) => 
                         
                     <tr>
-                        <td>{index + 1}</td>
-                        <td>{appointment.name}</td>
-                        <td>{appointment.gender}</td>
-                        <td>{appointment.age}</td>
-                        <td>{appointment.weight}KG</td>
-                        <td>{appointment.phone}</td>
-                        <td>{appointment.email}</td>
+                        <td>{order.name}</td>
+                        <td>{order.Email}</td>
+                        <td>{order.course}</td>
+                        <td>{order.message}</td>
+                        <td>
+                            <select className="form-control select" name="order">
+                                <option  value="Pending">Pending</option>
+                                <option value="Done" >done</option>
+                            </select>
+                            </td>
                     </tr>
                     )
-                } */}
-                 <tr>
+                }
+                 {/* <tr>
                         <td>Sufi Ahmed Hamim</td>
                         <td>sufi@gmail.com</td>
                         <td>Graphic Design</td>
@@ -44,7 +45,7 @@ export const AllServiceList = () => {
                                 <option value="Done" >done</option>
                             </select>
                             </td>
-                    </tr>
+                    </tr> */}
             </tbody>
         </table>
                         </div>
