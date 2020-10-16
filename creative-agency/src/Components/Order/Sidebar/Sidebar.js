@@ -10,7 +10,7 @@ export const Sidebar = () => {
     const[admin,setAdmin]=useState({});
     const [userService,setUserService,userLogin,setUserLogin]=useContext(UserContext);
   useEffect(() => {
-    fetch('http://localhost:50001/admin?email='+userLogin.email)
+    fetch('https://aqueous-shelf-28126.herokuapp.com/admin?email='+userLogin.email)
         .then(res => res.json())
         .then(data =>{
            if(data[0]){

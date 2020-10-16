@@ -20,7 +20,7 @@ export const AddService = () => {
     formData.append('title', data.title);
     formData.append('description', data.description);
 
-    fetch('http://localhost:50001/addService',{
+    fetch('https://aqueous-shelf-28126.herokuapp.com/addService',{
         method:'POST',
         body:formData
     })
@@ -90,7 +90,7 @@ export const AddService = () => {
 //         formData.append('name', info.name);
 //         formData.append('email', info.email);
 
-//         fetch('http://localhost:50001/addService', {
+//         fetch('https://aqueous-shelf-28126.herokuapp.com/addService', {
 //             method: 'POST',
 //             body: formData
 //         })

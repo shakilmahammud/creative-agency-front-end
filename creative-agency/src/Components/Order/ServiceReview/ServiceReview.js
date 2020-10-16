@@ -9,7 +9,7 @@ export const ServiceReview = () => {
     const { register, handleSubmit,errors } = useForm();
   const onSubmit = data => {
       data.img=userLogin.photo;
-    fetch('http://localhost:50001/addreview',{
+    fetch('https://aqueous-shelf-28126.herokuapp.com/addreview',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

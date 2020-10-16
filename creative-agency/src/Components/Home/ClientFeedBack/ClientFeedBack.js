@@ -7,7 +7,7 @@ export const ClientFeedBack = () => {
     const[feedbacks,setFeedbacks]=useState([])
     // console.log(feedbacks);
     useEffect(() => {
-        fetch('http://localhost:50001/userReview')
+        fetch('https://aqueous-shelf-28126.herokuapp.com/userReview')
             .then(res => res.json())
             .then(data =>{
                     setFeedbacks(data)

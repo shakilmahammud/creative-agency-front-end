@@ -7,7 +7,7 @@ export const AllServiceList = () => {
     const [orderService,setOrderService]=useState([])
     // console.log(orderService);
     useEffect(() => {
-        fetch('http://localhost:50001/userService')
+        fetch('https://aqueous-shelf-28126.herokuapp.com/userService')
             .then(res => res.json())
             .then(data =>setOrderService(data))
     },[])
@@ -33,7 +33,6 @@ export const AllServiceList = () => {
                             <td>{service.message}</td>
                             <td>
                                 <Dropdown as={ButtonGroup}>
-                                    {/* <Button variant="" className={service.status==="Pending"? "text-danger": service.status==="On going"? "text-warning":"text-success"}>{service.status}</Button> */}
                                     <Dropdown.Toggle scaret />
                                     <Dropdown.Menu>
                                         <Dropdown.Item ><Link  className="text-danger">Pending</Link></Dropdown.Item>

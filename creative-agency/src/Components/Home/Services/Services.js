@@ -7,7 +7,7 @@ import { useHistory } from 'react-router-dom';
 export const Services = () => {
     const [services,setServices]=useState([])
     useEffect(() => {
-        fetch('http://localhost:50001/services')
+        fetch('https://aqueous-shelf-28126.herokuapp.com/services')
             .then(res => res.json())
             .then(data =>setServices(data))
     },[])

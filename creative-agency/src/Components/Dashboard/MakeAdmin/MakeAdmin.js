@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 export const MakeAdmin = () => {
     const { register, handleSubmit,errors } = useForm();
   const onSubmit = data =>{
-    fetch('http://localhost:50001/addAdmin',{
+    fetch('https://aqueous-shelf-28126.herokuapp.com/addAdmin',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)

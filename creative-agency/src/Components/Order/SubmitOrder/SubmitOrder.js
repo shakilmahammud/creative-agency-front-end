@@ -13,7 +13,7 @@ export const SubmitOrder = ()=> {
     const { register, handleSubmit,errors } = useForm();
   const onSubmit = data => {
     data.img=userService.img;
-    fetch('http://localhost:50001/orderService', {
+    fetch('https://aqueous-shelf-28126.herokuapp.com/orderService', {
             method: 'POST',
             headers: { 'content-type': 'application/json' },
             body: JSON.stringify(data)

@@ -36,7 +36,7 @@ export const Login = () => {
 
 
 // useEffect(() => {
-//   fetch('http://localhost:50001/singleService?email='+userLogin.email)
+//   fetch('https://aqueous-shelf-28126.herokuapp.com/singleService?email='+userLogin.email)
 //       .then(res => res.json())
 //       .then(data =>console.log(data));
 // },[])
