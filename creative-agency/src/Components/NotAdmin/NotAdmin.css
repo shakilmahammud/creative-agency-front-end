@@ -1,0 +1,16 @@
+.not-admin
+    {
+        height:300px;
+        background: #FFFFFF;
+        border: 1px solid #C7C7C7;
+        box-sizing: border-box;
+        border-radius:20px;
+        padding:10px 0;
+        padding-left: 20px;
+        cursor: pointer;
+        margin-top:70px;
+        
+}
+.not-admin h2{
+    margin-top: 50px;
+}

@@ -1,7 +1,8 @@
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import './ServiceList.css'
 import service from '../../../images/icons/service1.png'
 export const ServiceList = ({userOrder}) => {
+    console.log(userOrder)
     return (
                        <div className="col-md-5">
                                  <div className="course-item">

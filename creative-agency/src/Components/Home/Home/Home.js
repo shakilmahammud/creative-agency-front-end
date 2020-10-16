@@ -1,4 +1,5 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
+import { Loaders } from '../../Loader/Loaders'
 import { ClientFeedBack } from '../ClientFeedBack/ClientFeedBack'
 import { Contact } from '../Contact/Contact'
 import { Header } from '../Header/Header'
@@ -7,8 +8,16 @@ import { Portfolio } from '../Portfolio/Portfolio'
 import { Services } from '../Services/Services'
 
 export const Home = () => {
+    const [loader,setloader]=useState(false)
+
+    useEffect(()=>{
+        setloader(!loader)
+    },[])
     return (
-        <div>
+        <>
+        {
+            !loader? <Loaders/> : 
+            <div>
             <Header/>
             <JoinCompany/>
             <Services/>
@@ -16,5 +25,8 @@ export const Home = () => {
             <ClientFeedBack/>
             <Contact/>
         </div>
+            
+        }
+        </>
     )
 }

@@ -1,55 +1,52 @@
-import React from 'react';
-import './AllServiceList.css'
+import React, { useEffect, useState } from 'react';
+import './AllServiceList.css';
+import { Button, ButtonGroup, Dropdown, Table } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
-export const AllServiceList = ({orderService}) => {
+export const AllServiceList = () => {
+    const [orderService,setOrderService]=useState([])
+    // console.log(orderService);
+    useEffect(() => {
+        fetch('http://localhost:50001/userService')
+            .then(res => res.json())
+            .then(data =>setOrderService(data))
+    },[])
     return (
-        <section>
-        <div className="showOrder">
-        <div className="bg-color">
-         <table className="table table-borderless">
-            <thead >
-                <tr >
-                <th className="text-secondary text-left" scope="col">Name</th>
-                <th className="text-secondary" scope="col">Email ID</th>
-                <th className="text-secondary" scope="col">Service</th>
-                <th className="text-secondary" scope="col">Project Details</th>
-                <th className="text-secondary" scope="col">Status</th>
+        <div style={{ borderRadius: '20'}} className="p-5 bg-white">
+        <Table responsive size="sm">
+            <thead style={{ backgroundColor: "#F4F7FC" }}>
+                <tr>
+                    <th>Name</th>
+                    <th>Email ID</th>
+                    <th>Service</th>
+                    <th>Project Details</th>
+                    <th>Status</th>
                 </tr>
             </thead>
             <tbody>
                 {
-                  orderService.map((order,index) => 
-                        
-                    <tr>
-                        <td>{order.name}</td>
-                        <td>{order.Email}</td>
-                        <td>{order.course}</td>
-                        <td>{order.message}</td>
-                        <td>
-                            <select className="form-control select" name="order">
-                                <option  value="Pending">Pending</option>
-                                <option value="Done" >done</option>
-                            </select>
+                    orderService.map(service =>
+                        <tr key={service._id}>
+                            <td>{service.name}</td>
+                            <td>{service.Email}</td>
+                            <td>{service.course}</td>
+                            <td>{service.message}</td>
+                            <td>
+                                <Dropdown as={ButtonGroup}>
+                                    {/* <Button variant="" className={service.status==="Pending"? "text-danger": service.status==="On going"? "text-warning":"text-success"}>{service.status}</Button> */}
+                                    <Dropdown.Toggle scaret />
+                                    <Dropdown.Menu>
+                                        <Dropdown.Item ><Link  className="text-danger">Pending</Link></Dropdown.Item>
+                                        <Dropdown.Item  ><Link  className="text-warning">On going</Link></Dropdown.Item>
+                                        <Dropdown.Item ><Link  className="text-success">Done</Link></Dropdown.Item>
+                                    </Dropdown.Menu>
+                                </Dropdown>
                             </td>
-                    </tr>
+                        </tr>
                     )
                 }
-                 {/* <tr>
-                        <td>Sufi Ahmed Hamim</td>
-                        <td>sufi@gmail.com</td>
-                        <td>Graphic Design</td>
-                        <td>Lorem ipsum dolor <br/> sit amet, consectetur <br/> adipiscing elit. </td>
-                        <td>
-                            <select className="form-control select" name="order"  >
-                                <option  value="Pending">Pending</option>
-                                <option value="Done" >done</option>
-                            </select>
-                            </td>
-                    </tr> */}
             </tbody>
-        </table>
-                        </div>
-                        </div>
-        </section>
+        </Table>
+    </div>
     )
 }

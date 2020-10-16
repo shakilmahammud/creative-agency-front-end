@@ -1,11 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Orderheader } from '../../Order/Order';
 import { ServiceList } from '../ServiceList';
 import {Sidebar} from '../../../Order/Sidebar/Sidebar'
+import { UserContext } from '../../../../App';
+import { Loaders } from '../../../Loader/Loaders';
 
-export const OrderService = ({orderService}) => { 
+export const OrderService = () => { 
+    const [userService,setUserService,userLogin,setUserLogin]=useContext(UserContext)
+    const [singleService,setSingleService]=useState([])
+    useEffect(() => {
+        fetch('http://localhost:50001/singleService?email='+userLogin.email)
+            .then(res => res.json())
+            .then(data =>setSingleService(data));
+      },[])
+      const [loader,setloader]=useState(false)
+
+    useEffect(()=>{
+        setloader(!loader)
+    },[])
+   
     return (
+       
        <section>
+            {
+            !loader? <Loaders/> :
            <div className="container">
                <div className="row">
                    <div className="col-md-2">
@@ -16,7 +34,7 @@ export const OrderService = ({orderService}) => {
                    <div className="showOrder">
                        <div className="row">
                {
-                   orderService.map(userOrder=>
+                   singleService.map(userOrder=>
                    <ServiceList
                    userOrder={userOrder}
                    />
@@ -27,6 +45,7 @@ export const OrderService = ({orderService}) => {
                </div>
                </div>
            </div>
+}
        </section>
     )
 }

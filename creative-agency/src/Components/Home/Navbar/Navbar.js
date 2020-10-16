@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import logo from '../../../images/logos/logo.png';
 import './Navbar.css';
 import  {Link} from 'react-router-dom'
@@ -8,6 +8,20 @@ import { Login } from '../../Login/Login/Login';
 
 export const Navbar = () => {
   const [userService,setUserService,userLogin,setUserLogin] = useContext(UserContext);
+  const[admin,setAdmin]=useState({});
+useEffect(() => {
+  fetch('http://localhost:50001/admin?email='+userLogin.email)
+      .then(res => res.json())
+      .then(data =>{
+         if(data[0]){
+          const mail=data[0].email;
+          setAdmin(mail)
+         }
+         else{
+             setAdmin({})
+         }
+      })
+},[])
     return (
        <div className="container">
             <nav class="navbar navbar-expand-lg navbar-light ">
@@ -31,10 +45,12 @@ export const Navbar = () => {
       <li class="nav-item">
         <Link class="nav-link" to="/contact">Contact Us</Link>
       </li>
-     
+     {
+       admin===userLogin.email ? <Link to="/dashboard"><button className="btn">Admin</button></Link> :<Link to="/not"><button className="btn">Admin</button></Link>
+     }
       <li class="nav-item">
         {
-          userLogin?<Link className="nav-link"><Avatar/> {userLogin?.name}</Link>:<Link to="/login"><button className="btn">Login</button></Link>
+          userLogin?<Link className="nav-link d-flex"><Avatar/> {userLogin?.name}</Link>:<Link to="/login"><button className="btn">Login</button></Link>
         }
       </li>
     </ul>

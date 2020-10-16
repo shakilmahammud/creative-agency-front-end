@@ -11,47 +11,53 @@ import { UserContext } from '../../../App';
 
 export const Login = () => {
   const [userService,setUserService,userLogin,setUserLogin] = useContext(UserContext);
+  
+  const [user, setUser] = useState({
+    isSiggnedIn: false,
+    name: '',
+    email:'',
+    photo: ''
+});
   const history = useHistory();
   const location=useLocation().location?.pathname
   if (firebase.apps.length === 0) {
     firebase.initializeApp(firebaseConfig);
   }
-  const[admin,setAdmin]=useState([]);
-  const adminDashboard=(email,email1)=>{
-    console.log(userLogin.email)
-    if(email===email1 ){
-      history.push("/dashboard")
-    }
-    else{
-      history.replace(location || "/")
-    }
-  }
-  useEffect(() => {
-    fetch('http://localhost:50001/admin?email='+userLogin.email)
-        .then(res => res.json())
-        .then(data =>setAdmin(data))
-},[])
+  // const[admin,setAdmin]=useState([]);
+  
+  // const adminDashboard=(email1)=>{
+  //   if(userLogin.email===email1 ){
+  //     history.push("/dashboard")
+  //   }
+  //   else{
+      
+  //   }
+  // }
+
+
+// useEffect(() => {
+//   fetch('http://localhost:50001/singleService?email='+userLogin.email)
+//       .then(res => res.json())
+//       .then(data =>console.log(data));
+// },[])
 
   const handleGoogleSignIn = () => {
     var provider = new firebase.auth.GoogleAuthProvider();
     firebase.auth().signInWithPopup(provider).then(res=> {
-      const {displayName, email} =res.user;
+      const {displayName, email, photoURL} = res.user;
             const signedInUser = {
-                isSignedIn: true,
+                isSiggnedIn: true,
                 name: displayName,
                 email: email,
+                photo: photoURL
             }
+            setUser(signedInUser);
             setUserLogin(signedInUser);
-            fetch('http://localhost:50001/admin?email='+email)
-        .then(res => res.json())
-        .then(data =>{
-          setAdmin(data)
-          adminDashboard(email,data[0].email)
-          storeAuthToken();
-        }
-        )
+            history.replace(location || "/")
+            storeAuthToken();
      
-    }).catch(function (error) {
+    })
+    .catch(function (error) {
       const errorMessage = error.message;
       console.log(errorMessage);
     });
@@ -61,6 +67,7 @@ export const Login = () => {
     firebase.auth().currentUser.getIdToken(/* forceRefresh */ true)
       .then(function (idToken) {
         sessionStorage.setItem('token', idToken);
+        sessionStorage.setItem('eamil',userLogin.email)
         // history.replace(location || "/");
       }).catch(function (error) {
         // Handle error

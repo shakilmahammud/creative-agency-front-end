@@ -1,11 +1,14 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { useForm } from 'react-hook-form'
+import { UserContext } from '../../../App'
 import { Orderheader } from '../Order/Order'
 import { Sidebar } from '../Sidebar/Sidebar'
 
 export const ServiceReview = () => {
+    const [userService,setUserService,userLogin,setUserLogin]=useContext(UserContext)
     const { register, handleSubmit,errors } = useForm();
   const onSubmit = data => {
+      data.img=userLogin.photo;
     fetch('http://localhost:50001/addreview',{
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

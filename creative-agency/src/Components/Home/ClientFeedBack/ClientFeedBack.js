@@ -1,29 +1,8 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './ClientFeedBack.css';
-import customer1 from '../../../images/customer-1.png';
-import customer2 from '../../../images/customer-2.png';
-import customer3 from '../../../images/customer-3.png';
+import { useScrollTrigger } from '@material-ui/core';
+import { UserContext } from '../../../App';
 
-// const feedBackData=[
-//     {
-//       img:customer1,
-//       name:'Nash Patrik',
-//       title:'CEO, Manpol',
-//       description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat ',
-//     },
-//     {
-//         img:customer2,
-//         name:'Miriam Barron ',
-//         title:'CEO, Manpol',
-//         description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat ',
-//       },
-//       {
-//         img:customer3,
-//         name:'Bria Malone',
-//         title:'CEO, Manpol',
-//         description:'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Purus commodo ipsum duis laoreet maecenas. Feugiat ',
-//       },
-// ]
 export const ClientFeedBack = () => {
     const[feedbacks,setFeedbacks]=useState([])
     // console.log(feedbacks);
@@ -45,9 +24,6 @@ export const ClientFeedBack = () => {
                     feedback={feedback}
                     />)
                 }
-                {/* {
-                    feedbacks.map(review=><FeedBackDetails/>)
-                } */}
             </div>
         </div>
        </section>
@@ -61,7 +37,9 @@ export const FeedBackDetails=({feedback})=>{
         <div className="col-md-4 feedback-details">
             <div className="feedback-txt">
             <div className=" d-flex">
-                <img src={customer1} alt=""/>
+                
+                    <img src={feedback.img} alt=""/>
+                
                 <div>
                 <h4>{feedback.name}</h4>
                 <p>{feedback.copany}</p>

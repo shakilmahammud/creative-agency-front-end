@@ -1,33 +1,6 @@
-.bg-color{
-    background:#fff;
-    margin-right: 20px;
-    margin-top: -50px;
-    padding:25px 20px;
+.btn-group-vertical>.btn, .btn-group>.btn{
+    background:transparent;
 }
-.bg-color .th-bg{
-    margin: 25px 20px;
-    height: 54px;
-    background: #F5F6FA;
-    border-radius: 13px;
-}
-
-.bg-color thead{
-    height: 54px;
-    background: #F5F6FA ;
-   
-}
-.bg-color table {
-    border-collapse: collapse;
-    border-radius: 15px;
-    overflow: hidden;
-  }
-/* .select{
-    border: none;
-}
-.select option{
-    color: green !important;
-}
-  */
   
 
 

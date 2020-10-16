@@ -1,34 +1,8 @@
 import React, { useContext, useEffect, useState } from 'react';
 import './Services.css';
-import service1 from '../../../images/icons/service1.png';
-import service2 from '../../../images/icons/service2.png';
-import service3 from '../../../images/icons/service3.png';
 import {UserContext} from '../../../App'
 import { useHistory } from 'react-router-dom';
 
-
-
-const serviceData=[
-    {
-    id:1,
-    img:service1,
-    name:'Web & Mobile design',
-    description:'We craft stunning and amazing web UI, using a well drrafted UX to fit your product.'
-  },
-  {
-    id:2,
-    img:service2,
-    name:'Graphic design',
-    description:'Amazing flyers, social media posts and brand representations that would make your brand stand out.'
-  },
-  {
-    id:3,
-    img:service3,
-    name:'Web development',
-    description:'With well written codes, we build amazing apps for all platforms, mobile and web apps in general.'
-  }
-
-]
 // services part 
 export const Services = () => {
     const [services,setServices]=useState([])

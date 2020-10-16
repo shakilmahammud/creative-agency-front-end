@@ -9,7 +9,8 @@ export const PrivateRoute = ({children, ...rest}) => {
     const location =useLocation()
     const isLoggedIn = () => {
       const token = sessionStorage.getItem('token');
-      if(!token){
+      const email=sessionStorage.getItem('email')
+      if(!token || !email){
         return false;
       }
       const decodedToken = jwt_decode(token);
